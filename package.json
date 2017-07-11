@@ -1,6 +1,6 @@
 {
   "name": "essed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Like Unix \"sed\" but for JS code",
   "main": "index.js",
   "scripts": {
