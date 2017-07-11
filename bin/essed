@@ -5,16 +5,21 @@
 const program = require('commander');
 const pkg = require('../package.json');
 const _ = require('lodash');
+const fs = require('fs');
 
 program
     .version(pkg.version)
     .option('-F, --file <required>', 'File to load JavaScript from')
-    .option('-e, --code <required>', 'Raw code to execute')
     .option('--map <required>', 'Code to map each line')
-    .option('--reduce <required>', 'Code to reduce each line')
-    .option('--parallelism <optional>', 'Maximal level of parallelism', Infinity)
-    .option('--json-lines', 'Input is line delimited JSON');
+    .option('--filter <required>', 'Filter matching lines');
 
 const run = require('../index.js');
-
-run(_.pick(process, ['stdin', 'stdout', 'stderr']), program.parse(process.argv));
+const args = program.parse(process.argv);
+const defaultStreams = _.pick(process, ['stdin', 'stdout', 'stderr']);
+if (args.args.length > 1) {
+    console.error('Too many arguments: '+args.args.map(v => JSON.stringify(args)).join(' '));
+    process.exit(1);
+} else if (args.args.length === 1) {
+    defaultStreams.stdin = fs.createReadStream(args.args[0]);
+}
+run(defaultStreams, args);

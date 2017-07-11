@@ -1,17 +1,16 @@
 'use strict';
 const _ = require('lodash');
-const {map, reduce, raw} = require('./lib');
+const {map, filter} = require('./lib');
 
 module.exports = (streams, args) => {
-    xorAssert(args, ['map', 'code', 'file', 'reduce']);
+    xorAssert(args, ['map', 'file', 'filter']);
+
     if (args.map) {
         return map(streams, args.map);
-    } else if (args.reduce) {
-        return reduce(streams, args.reduce);
+    } else if (args.filter) {
+        return filter(streams, args.filter);
     } else {
-        if (args.file) {
-
-        }
+        throw new Error('TODO: add support for script files');
     }
 };
 
