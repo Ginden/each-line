@@ -1,6 +1,6 @@
 {
   "name": "essed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Like Unix \"sed\" but for JS code",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Ginden/each-line#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "byline": "^5.0.0",
     "commander": "^2.11.0",
     "highland": "^2.11.0",
