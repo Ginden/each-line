@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const program = require('commander');
+const pkg = require('../package.json');
+const _ = require('lodash');
+
+program
+    .version(pkg.version)
+    .option('-F, --file <required>', 'File to load JavaScript from')
+    .option('-e, --code <required>', 'Raw code to execute')
+    .option('--map <required>', 'Code to map each line')
+    .option('--reduce <required>', 'Code to reduce each line')
+    .option('--parallelism <optional>', 'Maximal level of parallelism', Infinity)
+    .option('--json-lines', 'Input is line delimited JSON');
+
+const run = require('../index.js');
+
+run(_.pick(process, ['stdin', 'stdout', 'stderr']), program.parse(process.argv));

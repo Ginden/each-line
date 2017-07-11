@@ -1,0 +1,29 @@
+{
+  "name": "essed",
+  "version": "1.0.0",
+  "description": "Like Unix \"sed\" but for JS code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "essed": "./bin/essed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ginden/each-line.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ginden/each-line/issues"
+  },
+  "homepage": "https://github.com/Ginden/each-line#readme",
+  "dependencies": {
+    "byline": "^5.0.0",
+    "commander": "^2.11.0",
+    "highland": "^2.11.0",
+    "lodash": "^4.17.4"
+  }
+}
