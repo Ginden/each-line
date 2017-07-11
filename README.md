@@ -1,12 +1,10 @@
 # essed
 
-`essed` is a simple program aiming to replace `sed` in certain tasks.
+`essed` is a simple program aiming to replace `sed` in subset of its applications.
 
 ## mapping
 
 In 1.0 relase only mapping with ad-hoc code is supported.
-
-
 
 ### Examples
 
@@ -27,6 +25,8 @@ cat ~/.zshrc | essed --map "line.trim().startsWith('#') ? null : line"
 ```
 
 
+
+
 ### Allowed return values
 
 * `Promise<string>`
@@ -39,6 +39,7 @@ For your convenience we expose following "globals":
 * `P`, `Bluebird` - Bluebird instance
 * `lodash`, `_` - lodash instance
 * `hl`, `highland` - highland instance
+* `deburr`, `pad`, `trim`, `truncate`, `upperFirst`, `replace` - exported from `lodash`
 
 Line is available as `line`, `value`, `$0`.
 
