@@ -1,6 +1,6 @@
 {
   "name": "essed",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Like Unix \"sed\" but for JS code",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "byline": "^5.0.0",
+    "colors": "^1.1.2",
     "commander": "^2.11.0",
     "highland": "^2.11.0",
     "lodash": "^4.17.4"

@@ -1,6 +1,6 @@
 # essed
 
-`essed` is a simple program with purpose similar to `sed`.
+`essed` is a simple program with purpose similar to `sed` or `awk`
 
 
 ## Pros and cons
