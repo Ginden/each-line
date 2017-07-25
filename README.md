@@ -14,7 +14,7 @@
 
 ### When not to use essed
 
-* Performance - `sed` is strongly optimized C code. JavaScript is much slower.
+* Performance - `sed` is strongly optimized C code. JavaScript is much slower. It's totally possible for `essed` to be *200* times slower than C-based tools.
 * Non-UTF8 encodings (at least yet)
 * Dealing with binary files
 
@@ -26,16 +26,18 @@
 
 
 ## TODO
-* Loading code from file - 
+* Loading code from file
 * `assert` - assert input match some criteria. If it doesn't, break pipeline, otherwise return untouched
 * `find` - find first line matching some criteria
-* `limit` parameter on `filter` - if number of matched items exceed limit
+* `limit` parameter on `filter` - if number of matched items exceed limit, drop them down
 * `limit` parameter on `map`
 * `takeWhile`
 * `takeUntil`
 * `findLast`
 * `reduce`
 * Native support for line-delimited JSON
+* Provide Webpack compiled build to improve startup time
+* Provide way to load external modules
 
 ## map
 
@@ -56,6 +58,13 @@ Remove comments (nulls and undefineds are filtered out from output):
 ```bash
 cat ~/.zshrc | essed --map "value.trim().startsWith('#') ? null : line"
 ```
+
+Color even lines (terminal):
+
+```bash
+cat ~/.zshrc | essed -m "i % 2 ? line.yellow : line"
+```
+
 
 ## filter
 
@@ -78,16 +87,23 @@ essed --filter "line.trim().startsWith('#')" ~/.zshrc
 ### Enviroment
 
 For your convenience we expose following "globals":
+* `shared` - empty object shared by many invocations
 * `P`, `Bluebird` - Bluebird instance
 * `lodash`, `_` - lodash instance
 * `hl`, `highland` - highland instance
 * `deburr`, `pad`, `trim`, `truncate`, `upperFirst`, `replace` - exported from `lodash`
 * `execFile`, `execFileSync` - exported from native `child_process`
+* `colors` - [`colors`]((https://www.npmjs.com/package/colors)) instance
 * `log` - function that logs it's input on **`stderr`** and returns first argument.
+* `fs` - native Node.js module
+** `log(line) === line`
 
-Line is available as `line`, `value`, `$0`.
+[colors](https://www.npmjs.com/package/colors) module is avalaible by default.
+
+Line is available as `line`, `l`, `value`, `$0`.
 
 Number of line is avalaiable as `i` and `index`.
+
 
 # Resources to read:
 
@@ -96,5 +112,6 @@ Number of line is avalaiable as `i` and `index`.
   * [`lodash`](https://lodash.com/docs/)
   * [`highland`](http://highlandjs.org/)
   * [`bluebird`](http://bluebirdjs.com/docs/api-reference.html)
+  * [`colors`](https://www.npmjs.com/package/colors)
 * [Recipes](./recipes.md)
 * [jq](https://stedolan.github.io/jq/) - can be better choice for JSON-heavy jobs
