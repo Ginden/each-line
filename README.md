@@ -26,18 +26,6 @@
 
 
 ## TODO
-* Loading code from file
-* `assert` - assert input match some criteria. If it doesn't, break pipeline, otherwise return untouched
-* `find` - find first line matching some criteria
-* `limit` parameter on `filter` - if number of matched items exceed limit, drop them down
-* `limit` parameter on `map`
-* `takeWhile`
-* `takeUntil`
-* `findLast`
-* `reduce`
-* Native support for line-delimited JSON
-* Provide Webpack compiled build to improve startup time
-* Provide way to load external modules
 
 ## map
 
